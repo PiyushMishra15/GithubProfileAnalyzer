@@ -47,7 +47,9 @@ export function CommitsChart({ username }: CommitsChartProps) {
         const data: Record<string, number> = {};
 
         events
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .filter((e: any) => e.type === "PushEvent")
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .forEach((e: any) => {
             const date = e.created_at.split("T")[0];
             data[date] = (data[date] || 0) + (e.payload.commits?.length || 0);
